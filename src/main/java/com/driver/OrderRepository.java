@@ -70,8 +70,10 @@ public class OrderRepository {
         Order order = orderDB.get(orderId);
         String deliveryPartner = deliveryPartnerFindingWithOrderIdDB.get(orderId);
         ArrayList<Order> orderList = deliveryPartnerWithOrderDB.get(deliveryPartner);
-        orderList.remove(order);
-        deliveryPartnerWithOrderDB.put(deliveryPartner,orderList);
+        if(orderList!=null) {
+            orderList.remove(order);
+            deliveryPartnerWithOrderDB.put(deliveryPartner, orderList);
+        }
         return "Removed Successfully";
     }
 }
