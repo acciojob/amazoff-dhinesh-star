@@ -96,8 +96,8 @@ public class OrderController {
         return new ResponseEntity<>(countOfOrders, HttpStatus.CREATED);
     }
 
-    @GetMapping("/get-count-of-orders-left-after-given-time/{partnerId}")
-    public ResponseEntity<Integer> getOrdersLeftAfterGivenTimeByPartnerId(@PathVariable String time, @PathVariable String partnerId){
+    @GetMapping("/get-count-of-orders-left-after-given-time/{partnerId}/{time}")
+    public ResponseEntity<Integer> getOrdersLeftAfterGivenTimeByPartnerId(@PathVariable("time") String time, @PathVariable("partnerId") String partnerId){
 
         Integer countOfOrders = 0;
         int hrs=Integer.parseInt(time.substring(0,2));
